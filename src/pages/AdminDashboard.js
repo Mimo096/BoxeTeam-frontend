@@ -2,6 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style/AdminDashboard.css';
 
+
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
+
 function AdminDashboard() {
     const [refreshData, setRefreshData] = useState(0);
     const [members, setMembers] = useState([]);
@@ -43,7 +46,7 @@ const editNoteRef = useRef();
     // Récupérer tous les membres
     const fetchMembers = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/members', {
+            const response = await fetch(`${API_BASE_URL}/api/members`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
             });
             if (!response.ok) throw new Error('Erreur lors du chargement des membres');
@@ -78,7 +81,7 @@ const editNoteRef = useRef();
         try {
             console.log('ID du membre à modifier :', editingMember.id);
     
-            const response = await fetch(`http://localhost:4000/api/members/${editingMember.id}`, {
+            const response = await fetch(`${API_BASE_URL}/api/members/${editingMember.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -117,7 +120,7 @@ const editNoteRef = useRef();
     // Récupérer tous les commentaires
     const fetchComments = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/comments', {
+            const response = await fetch(`${API_BASE_URL}/api/comments`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
             });
             if (!response.ok) throw new Error('Erreur lors du chargement des commentaires');
@@ -146,7 +149,7 @@ const editNoteRef = useRef();
             return;
         }
         try {
-            const response = await fetch('http://localhost:4000/api/admin/members', {
+            const response = await fetch(`${API_BASE_URL}/admin/members`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -175,7 +178,7 @@ const editNoteRef = useRef();
 const handleDeleteComment = async (commentId) => {
     try {
     console.log('Tentative de suppression du commentaire avec l\'ID :', commentId);
-    const response = await fetch(`http://localhost:4000/api/comments/${commentId}`, {
+    const response = await fetch(`${API_BASE_URL}/api/comments/${commentId}`, {
     method: 'DELETE',
     headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
     });
@@ -200,7 +203,7 @@ const handleDeleteComment = async (commentId) => {
     const handleDeleteMember = async (memberId) => {
         try {
             console.log('Tentative de suppression du membre avec l\'ID :', memberId);
-            const response = await fetch(`http://localhost:4000/api/members/${memberId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/members/${memberId}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
             });
@@ -242,7 +245,7 @@ const handleDeleteComment = async (commentId) => {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:4000/api/comments/${commentId}/respond`, {
+            const response = await fetch(`${API_BASE_URL}/api/comments/${commentId}/respond`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

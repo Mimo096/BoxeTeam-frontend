@@ -10,7 +10,7 @@ function HorairesEntrainement() {
     { jour: "Jeudi", heures: "Fermé" },
     { jour: "Vendredi", heures: "17h00 - 18h30" },
     { jour: "Samedi", heures: "Fermé" },
-    { jour: "Dimanche", heures: "Fermé (ouvert de temps en temps de 16h00 à 18h00)" },
+    { jour: "Dimanche", heures: "Fermé (ouvert que pour le confirmé  de 16h00 à 18h00)" },
     { jour: "Jours fériés", heures: "Fermé" },
   ];
 

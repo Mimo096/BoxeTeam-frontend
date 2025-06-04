@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
 import 'swiper/css'; // Importe les styles par défaut
 import 'swiper/css/navigation'; // Importe les styles pour les flèches
@@ -22,7 +23,7 @@ function HomePage() {
 
     // Récupérer les commentaires depuis le backend
     useEffect(() => {
-        fetch('http://localhost:4000/api/comments') // URL du backend
+        fetch(`${API_BASE_URL}/api/comments`) // URL du backend
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des commentaires');
@@ -49,7 +50,7 @@ function HomePage() {
 
         setIsLoading(true); // Activer l'indicateur de chargement
 
-        fetch('http://localhost:4000/api/comments', {
+        fetch(`${API_BASE_URL}/api/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: newCommentName, message: newCommentText }),
@@ -80,7 +81,7 @@ function HomePage() {
         const adminName = prompt('Entrez votre nom (admin) :'); // Nom de l'admin
 
         if (response && adminName) {
-            fetch(`http://localhost:4000/api/comments/${commentId}/respond`, {
+            fetch(`${API_BASE_URL}/api/comments/${commentId}/respond`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ response, adminName }),
@@ -112,7 +113,7 @@ function HomePage() {
             console.log('Tentative de suppression du commentaire avec l\'ID :', commentId);
     
             // Envoi de la requête DELETE au backend
-            const response = await fetch(`http://localhost:4000/api/comments/${commentId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
             });

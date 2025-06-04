@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
 
 function AdminLogin() {
@@ -36,7 +37,7 @@ function AdminLogin() {
 
         try {
             console.log('Envoi des identifiants à l\'API', { email, password });
-            const response = await fetch('http://localhost:4000/api/admin/very-secure-path/login-admin-2025', {
+            const response = await fetch(`${API_BASE_URL}/api/admin/very-secure-path/login-admin-2025`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
