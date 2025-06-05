@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
 import 'swiper/css'; // Importe les styles par défaut
 import 'swiper/css/navigation'; // Importe les styles pour les flèches
@@ -9,9 +8,9 @@ import image1 from '../assets/image1.jpg'; // Importe les images locales
 import image2 from '../assets/image2.jpeg';
 import image3 from '../assets/image3.jpeg';
 import image4 from '../assets/co.webp';
-
 import './style/HomePage.css';
  
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
 function HomePage() {
     const [comments, setComments] = useState([]); // État pour stocker les commentaires
