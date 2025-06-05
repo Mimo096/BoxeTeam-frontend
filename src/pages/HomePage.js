@@ -12,6 +12,8 @@ import './style/HomePage.css';
  
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
+console.log("API_BASE_URL utilisée:", API_BASE_URL);
+
 function HomePage() {
     const [comments, setComments] = useState([]); // État pour stocker les commentaires
     const [visibleComments, setVisibleComments] = useState(5); // Nombre de commentaires visibles
