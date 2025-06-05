@@ -37,7 +37,7 @@ function AdminLogin() {
 
         try {
             console.log('Envoi des identifiants à l\'API', { email, password });
-            const response = await fetch(`${API_BASE_URL}/api/admin/very-secure-path/login-admin-2025`, {
+            const response = await fetch(`${API_BASE_URL}/admin/very-secure-path/login-admin-2025`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),

@@ -49,7 +49,7 @@ function AdminRegister() {
                 mot_de_passe_hash: formData.password,
             });
 
-            const response = await fetch(`${API_BASE_URL}/api/admin/register`, {
+            const response = await fetch(`${API_BASE_URL}/admin/register`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
