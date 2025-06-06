@@ -27,14 +27,8 @@ function App() {
             
             
                 <Routes>
-                    <Route
-    path="/admin/connexion-ultra-secrete-2025"
-                 element={
-            
-            <AdminLogin />
-        
-        }
-      />
+      
+    
                     <Route path="/" element={<HomePage />} />
                     <Route path="/A-propos" element={<APropos />} />
                     <Route path="/Nos-Tarifs" element={<NosTarifs />} />
