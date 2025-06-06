@@ -42,7 +42,7 @@ function AdminLogin() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
-
+ console.log('Réponse reçue, status:', response.status);
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Erreur lors de la connexion');
