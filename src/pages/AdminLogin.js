@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState  } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:4000';
 
-useEffect(() => {
-  console.log("API_BASE_URL =", API_BASE_URL);
-}, []);
 
 
 function AdminLogin() {
+
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
@@ -48,13 +48,16 @@ function AdminLogin() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
+
  console.log('Réponse reçue, status:', response.status);
+
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.error || 'Erreur lors de la connexion');
             }
 
             const data = await response.json();
+            console.log("Données reçues :", data);
             
             localStorage.setItem('adminToken', data.token) ; // Stocke le token JWT
             localStorage.setItem('adminId', data.adminId); // Stockez l'ID ici
