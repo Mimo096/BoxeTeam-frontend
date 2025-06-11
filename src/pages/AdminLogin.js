@@ -48,7 +48,7 @@ function AdminLogin() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, password }),
             });
-
+console.log('URL API appelée:', `${API_BASE_URL}/api/admin/very-secure-path/login-admin-2025`);
  console.log('Réponse reçue, status:', response.status);
 
             if (!response.ok) {
