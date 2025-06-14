@@ -87,11 +87,11 @@ function HomePage() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ response, adminName }),
             })
-                .then((response) => {
-                    if (!response.ok) {
+                .then((res) => {
+                    if (!res.ok) {
                         throw new Error('Erreur lors de la mise à jour de la réponse');
                     }
-                    return response.json();
+                    return res.json();
                 })
                 .then(() => {
                     setComments((prevComments) =>
