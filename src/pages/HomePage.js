@@ -24,7 +24,7 @@ function HomePage() {
 
     // Récupérer les commentaires depuis le backend
     useEffect(() => {
-        fetch(`${API_BASE_URL}/comments`) // URL du backend
+        fetch(`${API_BASE_URL}/api/comments`) // URL du backend
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Erreur lors de la récupération des commentaires');
@@ -51,7 +51,7 @@ function HomePage() {
 
         setIsLoading(true); // Activer l'indicateur de chargement
 
-        fetch(`${API_BASE_URL}/comments`, {
+        fetch(`${API_BASE_URL}/api/comments`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name: newCommentName, message: newCommentText }),
@@ -82,7 +82,7 @@ function HomePage() {
         const adminName = prompt('Entrez votre nom (admin) :'); // Nom de l'admin
 
         if (response && adminName) {
-            fetch(`${API_BASE_URL}/comments/${commentId}/respond`, {
+            fetch(`${API_BASE_URL}/api/comments/${commentId}/respond`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ response, adminName }),
@@ -114,7 +114,7 @@ function HomePage() {
             console.log('Tentative de suppression du commentaire avec l\'ID :', commentId);
     
             // Envoi de la requête DELETE au backend
-            const response = await fetch(`${API_BASE_URL}/comments/${commentId}`, {
+            const response = await fetch(`${API_BASE_URL}/api/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` },
             });
